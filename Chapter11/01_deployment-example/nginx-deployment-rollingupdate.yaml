@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment-example
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+      environment: test
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: nginx
+        environment: test
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.17
+        ports:
+        - containerPort: 80
+        command: ["/bin/sh"]
+        args: ["-c", "touch /usr/share/nginx/html/ready; echo \"You have been served by Pod with IP address: $(hostname -i)\" > /usr/share/nginx/html/index.html; nginx -g \"daemon off;\""]
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 2
+          timeoutSeconds: 10
+          successThreshold: 1
+          failureThreshold: 2
