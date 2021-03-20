@@ -25,8 +25,13 @@ spec:
         image: nginx:1.17
         ports:
         - containerPort: 80
-        command: ["/bin/sh"]
-        args: ["-c", "touch /usr/share/nginx/html/ready; echo \"You have been served by Pod with IP address: $(hostname -i)\" > /usr/share/nginx/html/index.html; nginx -g \"daemon off;\""]
+        command:
+        - /bin/sh
+        - -c
+        - |
+          touch /usr/share/nginx/html/ready
+          echo "You have been served by Pod with IP address: $(hostname -i)" > /usr/share/nginx/html/index.html
+          nginx -g "daemon off;"
         readinessProbe:
           httpGet:
             path: /ready
