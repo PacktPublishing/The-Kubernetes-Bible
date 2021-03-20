@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: nginx-statefulset-example
+spec:
+  replicas: 3
+  serviceName: nginx-headless
+  podManagementPolicy: OrderedReady
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      partition: 0
+  selector:
+    matchLabels:
+      app: nginx-stateful
+      environment: test
+  template:
+    metadata:
+      labels:
+        app: nginx-stateful
+        environment: test
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.17
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: nginx-data
+          mountPath: /usr/share/nginx/html
+        command: 
+        - /bin/sh
+        - -c
+        - |
+          echo "You have been served by Pod with IP address: $(hostname -i)" > /usr/share/nginx/html/index.html
+          nginx -g "daemon off;"
+  volumeClaimTemplates:
+  - metadata:
+      name: nginx-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
