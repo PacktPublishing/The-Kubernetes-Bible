@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-logger-static
+spec:
+  serviceAccountName: pod-logger
+  containers:
+  - name: logger
+    image: radial/busyboxplus:curl
+    command: 
+    - /bin/sh
+    - -c
+    - |
+      SERVICEACCOUNT=/var/run/secrets/kubernetes.io/serviceaccount
+      TOKEN=$(cat ${SERVICEACCOUNT}/token)
+      while true
+      do
+        echo "Querying Kubernetes API Server for Pods in default namespace..."
+        curl --cacert $SERVICEACCOUNT/ca.crt --header "Authorization: Bearer $TOKEN" -X GET https://kubernetes/api/v1/namespaces/default/pods
+        sleep 10
+      done
