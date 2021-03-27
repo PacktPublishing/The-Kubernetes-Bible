@@ -1,0 +1,15 @@
+{
+    "Name": "AKS Pods Writer",
+    "Description": "Allows read-write management of Pods in cluster/namespace.",
+    "Actions": [],
+    "NotActions": [],
+    "DataActions": [
+        "Microsoft.ContainerService/managedClusters/pods/read",
+        "Microsoft.ContainerService/managedClusters/pods/write",
+        "Microsoft.ContainerService/managedClusters/pods/delete"
+    ],
+    "NotDataActions": [],
+    "assignableScopes": [
+        "/subscriptions/<subscriptionId>"
+    ]
+}
