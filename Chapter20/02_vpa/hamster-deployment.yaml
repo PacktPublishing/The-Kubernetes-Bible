@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hamster
+spec:
+  selector:
+    matchLabels:
+      app: hamster
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: hamster
+    spec:
+      containers:
+      - name: hamster
+        image: ubuntu:20.04
+        resources:
+          requests:
+            cpu: 100m
+            memory: 50Mi
+        command:
+        - /bin/sh
+        - -c
+        - while true; do timeout 0.5s yes >/dev/null; sleep 0.5s; done
