@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: elastic-hamster
-  replicas: 5
+  replicas: 7
   template:
     metadata:
       labels:
@@ -18,11 +18,11 @@ spec:
         image: ubuntu:20.04
         resources:
           requests:
-            cpu: 200m
+            cpu: 500m
             memory: 50Mi
         env:
         - name: TOTAL_HAMSTER_USAGE
-          value: "1.0"
+          value: "7.0"
         command:
         - /bin/sh
         - -c
