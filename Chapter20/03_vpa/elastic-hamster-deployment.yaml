@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elastic-hamster
+spec:
+  selector:
+    matchLabels:
+      app: elastic-hamster
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: elastic-hamster
+    spec:
+      serviceAccountName: elastic-hamster
+      containers:
+      - name: hamster
+        image: ubuntu:20.04
+        resources:
+          requests:
+            cpu: 200m
+            memory: 50Mi
+        env:
+        - name: TOTAL_HAMSTER_USAGE
+          value: "1.0"
+        command:
+        - /bin/sh
+        - -c
+        - |
+          # Install curl and jq
+          apt update && apt install -y curl jq
+          
+          SERVICEACCOUNT=/var/run/secrets/kubernetes.io/serviceaccount
+          TOKEN=$(cat ${SERVICEACCOUNT}/token)
+          
+          while true
+            # Calculate CPU usage by hamster. This will dynamically adjust to be 1.0 / num_replicas. So for initial 5 replicas, it will be 0.2
+            HAMSTER_USAGE=$(curl -s --cacert $SERVICEACCOUNT/ca.crt --header "Authorization: Bearer $TOKEN" -X GET https://kubernetes/apis/apps/v1/namespaces/default/deployments/elastic-hamster | jq ${TOTAL_HAMSTER_USAGE}/'.spec.replicas')
+
+            # Hamster sleeps for the rest of the time, with a small adjustment factor
+            HAMSTER_SLEEP=$(jq -n 1.2-$HAMSTER_USAGE)
+           
+            echo "Hamster uses $HAMSTER_USAGE and sleeps $HAMSTER_SLEEP" 
+            do timeout ${HAMSTER_USAGE}s yes >/dev/null
+            sleep ${HAMSTER_SLEEP}s
+          done
