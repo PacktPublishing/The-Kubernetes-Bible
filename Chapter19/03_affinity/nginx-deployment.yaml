@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment-example
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: nginx
+      environment: test
+  template:
+    metadata:
+      labels:
+        app: nginx
+        environment: test
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: node-type
+                operator: NotIn
+                values:
+                - extremelyslow
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+              matchExpressions:
+              - key: node-type
+                operator: In
+                values:
+                - fast
+                - superfast
+      containers:
+      - name: nginx
+        image: nginx:1.17
+        ports:
+        - containerPort: 80

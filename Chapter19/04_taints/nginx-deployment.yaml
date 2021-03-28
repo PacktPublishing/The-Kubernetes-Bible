@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment-example
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: nginx
+      environment: test
+  template:
+    metadata:
+      labels:
+        app: nginx
+        environment: test
+    spec:
+      tolerations:
+      - key: machine-check-exception
+        operator: Equal
+        value: memory
+        effect: NoExecute
+        tolerationSeconds: 60
+      containers:
+      - name: nginx
+        image: nginx:1.17
+        ports:
+        - containerPort: 80
