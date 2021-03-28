@@ -1,0 +1,12 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: elastic-hamster-hpa
+spec:
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 75
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: elastic-hamster
