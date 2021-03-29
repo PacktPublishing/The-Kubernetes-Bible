@@ -1,0 +1,82 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-service1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: example-service1
+      environment: test
+  template:
+    metadata:
+      labels:
+        app: example-service1
+        environment: test
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.17
+        ports:
+        - containerPort: 80
+        command:
+        - /bin/sh
+        - -c
+        - |
+          echo "Welcome to example-service1! You have been served by Pod with IP address: $(hostname -i)" > /usr/share/nginx/html/index.html
+          nginx -g "daemon off;"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-service2
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: example-service2
+      environment: test
+  template:
+    metadata:
+      labels:
+        app: example-service2
+        environment: test
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.17
+        ports:
+        - containerPort: 80
+        command:
+        - /bin/sh
+        - -c
+        - |
+          echo "Welcome to example-service2! You have been served by Pod with IP address: $(hostname -i)" > /usr/share/nginx/html/index.html
+          nginx -g "daemon off;"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: example-service1
+spec:
+  selector:
+    app: example-service1
+    environment: test
+  type: ClusterIP
+  ports:
+  - protocol: TCP
+    port: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: example-service2
+spec:
+  selector:
+    app: example-service2
+    environment: test
+  type: ClusterIP
+  ports:
+  - protocol: TCP
+    port: 80
