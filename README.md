@@ -63,6 +63,6 @@ is an experienced system administrator who has been working in IT and related in
 Russ supports open source systems and tools on public and private clouds at N4Stack, a Node4 company, where he is the practice manager (SRE and DevOps). In his spare time, he has written several books including Mastering Docker, Learn Ansible and Kubernetes for Serverless Applications, all published by Packt Publishing.
 
 ## Other books by the authors
-* [About the Author](https://www.packtpub.com/cloud-networking/hands-on-kubernetes-on-windows?utm_source=github&utm_medium=repository&utm_campaign=9781838821562)
+* [Hands-On Kubernetes on Windows](https://www.packtpub.com/cloud-networking/hands-on-kubernetes-on-windows?utm_source=github&utm_medium=repository&utm_campaign=9781838821562)
 
-* [About the Author](https://www.packtpub.com/virtualization-and-cloud/learn-ansible?utm_source=github&utm_medium=repository&utm_campaign=9781788998758)
+* [Learn Ansible](https://www.packtpub.com/virtualization-and-cloud/learn-ansible?utm_source=github&utm_medium=repository&utm_campaign=9781788998758)
