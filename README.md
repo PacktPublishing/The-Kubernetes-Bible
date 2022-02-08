@@ -48,7 +48,7 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 ### Related products
 * Operational challenges with Kubernetes [[Packt]](https://www.packtpub.com/product/kubernetes-in-production-best-practices/9781800202450?utm_source=github&utm_medium=repository&utm_campaign=9781800202450) [[Amazon]](https://www.amazon.com/dp/1800202458)
 
-* About the Author [[Packt]](https://www.packtpub.com/product/cloud-native-with-kubernetes/9781838823078?utm_source=github&utm_medium=repository&utm_campaign=9781838823078) [[Amazon]](https://www.amazon.com/dp/1838823077)
+* Cloud Native with Kubernetes [[Packt]](https://www.packtpub.com/product/cloud-native-with-kubernetes/9781838823078?utm_source=github&utm_medium=repository&utm_campaign=9781838823078) [[Amazon]](https://www.amazon.com/dp/1838823077)
 
 ## Get to Know the Author
 **Nassim Kabbani**
