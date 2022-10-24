@@ -66,3 +66,7 @@ Russ supports open source systems and tools on public and private clouds at N4St
 * [Hands-On Kubernetes on Windows](https://www.packtpub.com/cloud-networking/hands-on-kubernetes-on-windows?utm_source=github&utm_medium=repository&utm_campaign=9781838821562)
 
 * [Learn Ansible](https://www.packtpub.com/virtualization-and-cloud/learn-ansible?utm_source=github&utm_medium=repository&utm_campaign=9781788998758)
+### Download a free PDF
+
+ <i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
+<p align="center"> <a href="https://packt.link/free-ebook/9781838827694">https://packt.link/free-ebook/9781838827694 </a> </p>
