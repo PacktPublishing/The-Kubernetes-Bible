@@ -57,6 +57,9 @@ With the following software and hardware list you can run all code files present
 
 We also provide a PDF file that has color images of the screenshots/diagrams used in this book. [Click here to download it](https://static.packt-cdn.com/downloads/9781838827694_ColorImages.pdf).
 
+## Errata
+ * Page 109: **kubectl run nginx-Pod --image nginx --label " tier=frontend"** _should be_ **kubectl run nginx-pod --image nginx --labels " tier-frontend"**
+
 ### Related products
 * Operational challenges with Kubernetes [[Packt]](https://www.packtpub.com/product/kubernetes-in-production-best-practices/9781800202450?utm_source=github&utm_medium=repository&utm_campaign=9781800202450) [[Amazon]](https://www.amazon.com/dp/1800202458)
 
