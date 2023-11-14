@@ -50,6 +50,9 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 
 ## Errata
  * Page 109: **kubectl run nginx-Pod --image nginx --label " tier=frontend"** _should be_ **kubectl run nginx-pod --image nginx --labels " tier-frontend"**
+ * Page 203: **kubectl run whoami1 –image=containous/whoami –port 80** _should be_ **kubectl run whoami2 –image=containous/whoami –port 80**
+ * Page 203: **Unlike most Kubernetes clusters, it is impossible to create services of the NodePort type using the declarative way"** _should be_ **imperative way**
+ * Page 182, 183: **kind is missing in spec file** 
 
 ### Related products
 * Operational challenges with Kubernetes [[Packt]](https://www.packtpub.com/product/kubernetes-in-production-best-practices/9781800202450?utm_source=github&utm_medium=repository&utm_campaign=9781800202450) [[Amazon]](https://www.amazon.com/dp/1800202458)
